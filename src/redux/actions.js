@@ -26,4 +26,11 @@ const delContact = (id) => {
     };
 };
 
-export default { initContacts, addContact, delContact };
+const filter = (value) => {
+    return {
+        type: types.FILTER_CONTACTS,
+        payload: value
+    }
+}
+
+export default { initContacts, addContact, delContact, filter };

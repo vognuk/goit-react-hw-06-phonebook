@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import { v4 as uuidv4 } from 'uuid'
 import Container from './components/Container'
 import Form from './components/Form'
 import Contacts from './components/Contacts'
@@ -28,20 +27,23 @@ class App extends Component {
   }
 
   filterContacts = e => {
-    this.setState({ filter: e.target.value });
+    this.props.filterContacts(e.target.value);
   };
 
-  // getVisibleContacts = () => {
-  //   const { filter, contacts } = this.state;
-  //   const normalizedFilter = filter.toLowerCase();
-  //   return contacts.filter(el =>
-  //     el.name.toLowerCase().includes(normalizedFilter)
-  //   );
-  // };
+  getVisibleContacts = () => {
+    const { filter } = this.state;
+    const { contacts } = this.props;
+    // console.log(contacts, this.props);
+    const normalizedFilter = filter.toLowerCase();
+
+    return contacts.filter(elem =>
+      elem.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
 
   render() {
     const { contacts, name, filter, number } = this.state;
-    // console.log('checkContact', this.props.checkContact(number))
+    // console.log(this.props.contacts)
     return (
       <Container>
         <Form
@@ -54,7 +56,8 @@ class App extends Component {
 
         <Filter
           value={filter}
-          onChange={this.filterContacts}
+          onChangefilter={this.filterContacts}
+
         />
 
         <Contacts
@@ -67,9 +70,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state);
   return {
-    contacts: state,
+    contacts: state.contacts.items,
   }
 };
 
@@ -77,7 +79,7 @@ const mapDispatchToProps = dispatch => {
   return {
     delContact: id => dispatch(action.delContact(id)),
     initContacts: contacts => dispatch(action.initContacts(contacts)),
-    // filterContacts
+    filterContacts: filter => dispatch(action.filter(filter)),
   }
 };
 

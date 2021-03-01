@@ -61,7 +61,7 @@ class Form extends Component {
   }
 
   render() {
-    const { addContact } = this.props;
+    // const { addContact } = this.props;
     const { name, number, sameContact } = this.state;
     return (
       <>
@@ -124,7 +124,7 @@ class Form extends Component {
 const mapStateToProps = state => {
   // console.log(state);
   return {
-    contacts: state,
+    contacts: state.contacts.items,
   }
 };
 

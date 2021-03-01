@@ -20,7 +20,8 @@ class Contacts extends Component {
 
   render() {
     const { contacts, onDelete } = this.props;
-    // console.log('contacts', this.props);
+    // filter
+    // console.log(contacts);
     return (<div>
       <TransitionGroup
         component="ul"
