@@ -18,7 +18,7 @@ const reducer = (state = initialState, actions) => {
 
     switch (actions.type) {
         case types.INIT_CONTACTS:
-            return { contacts: { items: actions.payload } }; //actions.payload
+            return { contacts: { items: actions.payload } };
 
         case types.ADD_CONTACT:
             return { contacts: { items: [...items, actions.payload] } };
@@ -28,7 +28,8 @@ const reducer = (state = initialState, actions) => {
             return { contacts: { items: filtered } };
 
         case types.FILTER_CONTACTS: {
-            return { contacts: { items, filter: actions.payload } };
+            const filtered = items.filter(elem => elem.name.toLowerCase().includes(actions.payload));
+            return { contacts: { items: filtered, filter: actions.payload } };
         }
 
         default:

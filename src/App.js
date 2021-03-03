@@ -7,10 +7,10 @@ import { connect } from 'react-redux'
 import action from './redux/actions'
 
 class App extends Component {
-  state = {
-    contacts: [],
-    filter: '',
-  };
+  // state = {
+  //   contacts: [],
+  //   filter: '',
+  // };
 
   componentDidMount() {
     const contacts = localStorage.getItem('contacts');
@@ -30,19 +30,19 @@ class App extends Component {
     this.props.filterContacts(e.target.value);
   };
 
-  getVisibleContacts = () => {
-    const { filter } = this.state;
-    const { contacts } = this.props;
-    // console.log(contacts, this.props);
-    const normalizedFilter = filter.toLowerCase();
+  // getVisibleContacts = () => {
+  //   const { filter } = this.state;
+  //   const { contacts } = this.props;
 
-    return contacts.filter(elem =>
-      elem.name.toLowerCase().includes(normalizedFilter)
-    );
-  };
+  //   const normalizedFilter = filter.toLowerCase();
+
+  //   return contacts.filter(elem =>
+  //     elem.name.toLowerCase().includes(normalizedFilter)
+  //   );
+  // };
 
   render() {
-    const { contacts, name, filter, number } = this.state;
+    const { contacts, name, filter, number } = this.props;
     // console.log(this.props.contacts)
     return (
       <Container>
@@ -57,12 +57,12 @@ class App extends Component {
         <Filter
           value={filter}
           onChangefilter={this.filterContacts}
-
         />
 
         <Contacts
           contacts={this.props.contacts}
           onDelete={this.props.delContact}
+          filter={this.props.filterContacts}
         />
       </Container>
     );
@@ -72,6 +72,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     contacts: state.contacts.items,
+    filter: state.contacts.filter,
   }
 };
 

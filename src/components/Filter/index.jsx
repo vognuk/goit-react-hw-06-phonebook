@@ -14,7 +14,7 @@ const Filter = ({ onChangefilter }) => {
         name='filter'
         placeholder='Find contacts by name'
         value={value}
-        onChange={onChangefilter}
+        onChange={e => onChangefilter}
       ></input>
     </label >
   );
