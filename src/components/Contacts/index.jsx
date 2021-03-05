@@ -19,13 +19,18 @@ class Contacts extends Component {
   state = {}
 
   render() {
-    const { contacts, onDelete } = this.props;
+    const { contacts, onDelete, filter } = this.props;
+    let list = contacts.filter(({ name }) => name.toLowerCase().includes(filter.toLowerCase()));
+    if (!list.length) {
+      list = contacts;
+    }
+
     return (<div>
       <TransitionGroup
         component="ul"
         className={s.list}
       >
-        {contacts.map((elem, id) => (
+        {list.map((elem, id) => (
           <CSSTransition
             key={id}
             timeout={250}

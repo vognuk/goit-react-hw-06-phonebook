@@ -56,13 +56,13 @@ class App extends Component {
 
         <Filter
           value={filter}
-          onChangefilter={this.filterContacts}
+          onChangeFilter={this.filterContacts}
         />
 
         <Contacts
           contacts={this.props.contacts}
           onDelete={this.props.delContact}
-          filter={this.props.filterContacts}
+          filter={filter}
         />
       </Container>
     );

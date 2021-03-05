@@ -2,8 +2,8 @@ import React from 'react'
 import s from './Filter.module.css'
 import PropTypes from 'prop-types'
 
-const Filter = ({ onChangefilter }) => {
-  const { value } = PropTypes;
+const Filter = ({ onChangeFilter, value }) => {
+  // const { value } = PropTypes;
 
   return (
     <label className={s.label}>
@@ -14,7 +14,7 @@ const Filter = ({ onChangefilter }) => {
         name='filter'
         placeholder='Find contacts by name'
         value={value}
-        onChange={e => onChangefilter}
+        onChange={onChangeFilter}
       ></input>
     </label >
   );
