@@ -24,10 +24,10 @@ const reducer = createReducer(initialState,
             state.contacts.items = [...state.contacts.items, action.payload];
         },
         [actions.delContact]: (state, action) => {
-            const filtered = items.filter(({ id }) => id !== action.payload);
+            let filtered = state.contacts.items.filter(({ id }) => id !== action.payload);
             state.contacts.items = filtered;
         },
-        [actions.filterContacts]: (state, action) => {
+        [actions.filter]: (state, action) => {
             // const filtered = items.filter(elem => elem.name.toLowerCase().includes(action.payload));
             // state.contacts = { items: filtered, filter: action.payload };
             state.contacts.filter = action.payload;

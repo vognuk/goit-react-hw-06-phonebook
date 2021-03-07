@@ -55,7 +55,8 @@ class App extends Component {
         ></Form>
 
         <Filter
-          value={filter}
+          value={filter}//console.log(filter)
+
           onChangeFilter={this.filterContacts}
         />
 

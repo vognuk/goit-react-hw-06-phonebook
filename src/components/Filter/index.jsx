@@ -3,7 +3,6 @@ import s from './Filter.module.css'
 import PropTypes from 'prop-types'
 
 const Filter = ({ onChangeFilter, value }) => {
-  // const { value } = PropTypes;
 
   return (
     <label className={s.label}>
