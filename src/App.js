@@ -7,10 +7,6 @@ import { connect } from 'react-redux'
 import action from './redux/actions'
 
 class App extends Component {
-  // state = {
-  //   contacts: [],
-  //   filter: '',
-  // };
 
   componentDidMount() {
     const contacts = localStorage.getItem('contacts');
@@ -29,17 +25,6 @@ class App extends Component {
   filterContacts = e => {
     this.props.filterContacts(e.target.value);
   };
-
-  // getVisibleContacts = () => {
-  //   const { filter } = this.state;
-  //   const { contacts } = this.props;
-
-  //   const normalizedFilter = filter.toLowerCase();
-
-  //   return contacts.filter(elem =>
-  //     elem.name.toLowerCase().includes(normalizedFilter)
-  //   );
-  // };
 
   render() {
     const { contacts, name, filter, number } = this.props;
